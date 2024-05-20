@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    Interactable currentInteractable;
+
     int currentScore = 0;
 
     public void IncreaseScore(int scoreAdded)
@@ -12,8 +14,21 @@ public class Player : MonoBehaviour
         Debug.Log(currentScore);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void UpdateInteractable(Interactable newInteractable)
+    {
+        currentInteractable = newInteractable;
+    }
+
+    void OnInteract()
+    {
+        if (currentInteractable != null)
+        {
+            currentInteractable.Interact(this);
+        }
+    }
+
+        // Start is called before the first frame update
+        void Start()
     {
         
     }

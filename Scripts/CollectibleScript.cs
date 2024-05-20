@@ -2,19 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleScript : MonoBehaviour
+public class CollectibleScript : Interactable
 {
     int score = 10;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            // tell player to increase score
-            collision.gameObject.GetComponent<Player>().IncreaseScore(score);
-
-            //Destroy him
-            Destroy(gameObject);
+            UpdatePlayerInteractable(collision.gameObject.GetComponent<Player>());
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            RemovePlayerInteractable(collision.gameObject.GetComponent<Player>());
+        }
+    }
+
+
+
+    public override void Interact(Player thePlayer)
+    {
+        base.Interact(thePlayer);
+        thePlayer.IncreaseScore(score);
+        Destroy(gameObject);
     }
 
 
