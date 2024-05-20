@@ -8,7 +8,7 @@ public class JumpBoost : Collectible
 
     public override void Collected(Player thePlayer)
     {
-        base.Collected(thePlayer); // Call the base class method (optional)
+        base.Collected(thePlayer);
         StarterAssets.FirstPersonController controller = thePlayer.GetComponent<StarterAssets.FirstPersonController>();
         if (controller != null)
         {
