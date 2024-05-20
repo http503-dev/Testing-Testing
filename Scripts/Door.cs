@@ -1,9 +1,3 @@
-/*
- * Author: Elyas Chua-Aziz
- * Date: 06/05/2024
- * Description: 
- * The door that opens when the player is near it and presses the interact button.
- */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

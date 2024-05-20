@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleScript : Interactable
+public class Collectible : Interactable
 {
     int score = 10;
     private void OnCollisionEnter(Collision collision)
@@ -11,6 +11,11 @@ public class CollectibleScript : Interactable
         {
             UpdatePlayerInteractable(collision.gameObject.GetComponent<Player>());
         }
+    }
+
+    public virtual void Collected(Player thePlayer)
+    {
+        Debug.Log("Collected");
     }
 
     private void OnCollisionExit(Collision collision)
@@ -28,6 +33,7 @@ public class CollectibleScript : Interactable
         base.Interact(thePlayer);
         thePlayer.IncreaseScore(score);
         Destroy(gameObject);
+        Collected(thePlayer);
     }
 
 

@@ -1,9 +1,3 @@
-/*
- * Author: Elyas Chua-Aziz
- * Date: 06/05/2024
- * Description: 
- * The KeyCard will destroy itself after being collided with.
- */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
