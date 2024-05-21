@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 
 public class SpeedBoost : Collectible
 {
@@ -9,12 +10,8 @@ public class SpeedBoost : Collectible
     public override void Collected(Player thePlayer)
     {
         base.Collected(thePlayer);
-        StarterAssets.FirstPersonController controller = thePlayer.GetComponent<StarterAssets.FirstPersonController>();
-        if (controller != null)
-        {
-            controller.MoveSpeed += speedIncrease;
-            Debug.Log("Player speed increased");
-        }
+        thePlayer.GetComponent<FirstPersonController>().MoveSpeed += speedIncrease;
+        Debug.Log(thePlayer.GetComponent<FirstPersonController>().MoveSpeed);
     }
     // Start is called before the first frame update
     void Start()
