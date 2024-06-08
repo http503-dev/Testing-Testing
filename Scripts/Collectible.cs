@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Collectible : Interactable
 {
-    int score = 10;
+    [SerializeField]
+    private AudioClip collectAudio;
+
+
+    public static int score = 10;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -15,6 +19,7 @@ public class Collectible : Interactable
 
     public virtual void Collected(Player thePlayer)
     {
+        AudioSource.PlayClipAtPoint(collectAudio, transform.position, 0.5f);
         Debug.Log("Collected");
     }
 
@@ -31,7 +36,7 @@ public class Collectible : Interactable
     public override void Interact(Player thePlayer)
     {
         base.Interact(thePlayer);
-        thePlayer.IncreaseScore(score);
+        GameManager.instance.IncreaseScore(score);
         Destroy(gameObject);
         Collected(thePlayer);
     }

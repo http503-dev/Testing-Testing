@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Door : Interactable
 {
+    [SerializeField]
+    private AudioSource openAudio;
+    public float OpenDuration;
+
     /// <summary>
     /// Flags if the door is open
     /// </summary>
@@ -58,6 +62,7 @@ public class Door : Interactable
             transform.eulerAngles = newRotation;
 
             opened = true;
+            openAudio.Play();
         }
     }
 

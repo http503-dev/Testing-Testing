@@ -5,14 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Interactable currentInteractable;
+    [SerializeField]
+    Transform playerCamera;
 
-    int currentScore = 0;
-
-    public void IncreaseScore(int scoreAdded)
-    {
-        currentScore += scoreAdded;
-        Debug.Log(currentScore);
-    }
+    [SerializeField]
+    float interactionDistance;
 
     public void UpdateInteractable(Interactable newInteractable)
     {
@@ -36,6 +33,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.DrawLine(playerCamera.position, playerCamera.position + (playerCamera.forward * interactionDistance), Color.red);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hitInfo, interactionDistance))
+        {
+            Debug.Log(hitInfo.transform.name);
+        }
     }
 }
